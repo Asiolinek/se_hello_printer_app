@@ -3,11 +3,15 @@ services:
         - docker
 python:
         - "2.7"
-install: 
+install:
         - make deps
-script: 
+script:
         - make test
         - make lint
         - make docker_build
         - make docker_push
-          
+
+deploy:
+        provider: heroku
+        app: agile-refuge-61164
+        api_key: ${HEROKU_API_KEY}
